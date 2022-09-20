@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:trivial_pursuit/interface/screens/home_page.dart';
+import 'package:trivial_pursuit/interface/screens/home/home_page.dart';
 
 void main() {
   runApp(TrivialPursuitApp());
