@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:trivial_pursuit/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+
+  final User? user = Auth().currentUser;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
+
+  Widget _userId() {
+    return Text(widget.user?.email ?? 'User email',
+        style: const TextStyle(fontSize: 25));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
         child: Column(
       children: [
         // Exit button
-
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
+          children: [
             IconButton(
-              onPressed: null,
-              icon: Icon(Icons.logout),
+              onPressed: () {
+                signOut();
+              },
+              icon: const Icon(Icons.logout),
               iconSize: 30,
             ),
           ],
@@ -42,15 +56,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
-              "Username",
-              style: TextStyle(fontSize: 35),
-            ),
-            SizedBox(
+          children: [
+            _userId(),
+            const SizedBox(
               width: 10,
             ),
-            IconButton(
+            const IconButton(
                 onPressed: null,
                 icon: Icon(
                   Icons.draw_sharp,
@@ -67,10 +78,6 @@ class _ProfilePageState extends State<ProfilePage> {
           "LEADERBOARD",
           style: TextStyle(fontSize: 35),
         ),
-
-        // const SizedBox(
-        //   height: 5,
-        // ),
 
         const Text(
           "128",

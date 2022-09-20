@@ -32,6 +32,15 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
               Column(children: const [Text("68145342")]),
             ],
           ),
+
+          // Test Row
+          TableRow(
+            children: [
+              Column(children: const [Text("2")]),
+              Column(children: const [Text("bzefoiu")]),
+              Column(children: const [Text("3528")]),
+            ],
+          ),
         ],
       )),
     );

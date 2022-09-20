@@ -2,9 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:trivial_pursuit/interface/screens/game/game_page.dart';
 import 'package:trivial_pursuit/interface/screens/leaderboard/leaderboard_page.dart';
 import 'package:trivial_pursuit/interface/screens/profile/profile_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:trivial_pursuit/auth.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final User? user = Auth().currentUser;
+
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
+
+  // The following methods will have to be moved to the profile section
+  Widget _title() {
+    return const Text('Firebase Auth');
+  }
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> pages = [
     const GamePage(),
     const LeaderboardPage(),
-    const ProfilePage()
+    ProfilePage()
   ];
 
   @override
