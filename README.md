@@ -6,7 +6,7 @@ A simple [trivial pursuit](https://fr.wikipedia.org/wiki/Trivial_Pursuit) app, w
 
 ___
 
-**Technos :** Flutter, Dart, Firebase
+**Technos :** Flutter, Dart, Firebase, Flask, Python
 
 **Author :** [Anatole de Chauveron](https://github.com/Anatole-DC)
 
