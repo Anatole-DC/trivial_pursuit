@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trivial_pursuit/controller/api.dart';
 import 'package:trivial_pursuit/interface/screens/game/anwser_button.dart';
 
 class GamePage extends StatefulWidget {
@@ -51,7 +52,18 @@ class _GamePageState extends State<GamePage> {
               AnwserButton(text: "1998")
             ])
           ],
-        )
+        ),
+
+        const SizedBox(
+          height: 75,
+        ),
+
+        ElevatedButton(
+          onPressed: () {
+            testAPI();
+          },
+          child: const Text("Call API"),
+        ),
       ],
     ));
   }
