@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:trivial_pursuit/auth.dart';
-import 'package:trivial_pursuit/interface/screens/authentication/login_screen.dart';
-import 'package:trivial_pursuit/interface/screens/home/home_page.dart';
 import 'package:trivial_pursuit/widget_tree.dart';
 
 void main() async {
