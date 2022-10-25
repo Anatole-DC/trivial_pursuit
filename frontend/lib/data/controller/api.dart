@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:http/http.dart' as http;
 
 const String ip = "192.168.43.34";

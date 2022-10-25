@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trivial_pursuit/controller/api.dart';
+import 'package:trivial_pursuit/data/controller/api.dart';
 import 'package:trivial_pursuit/interface/screens/game/anwser_button.dart';
 
 class GamePage extends StatefulWidget {
