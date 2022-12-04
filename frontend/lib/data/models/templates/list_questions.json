@@ -1,0 +1,20 @@
+{
+    "model_name": "list_questions",
+    "additionals": [
+        "copyWith",
+        "json",
+        "equatable"
+    ],
+    "style": "freezed",
+    "relations": [
+        {
+            "name": "question"
+        }
+    ],
+    "properties": [
+        {
+            "name": "results",
+            "type": "List<Question>"
+        }
+    ]
+}

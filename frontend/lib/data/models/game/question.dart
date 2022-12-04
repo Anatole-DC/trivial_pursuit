@@ -12,10 +12,11 @@ class Question with _$Question {
   /// {@macro question}
   const factory Question({ 
     required String category,
-    required String correct_awnser,
+    required String type,
     required String difficulty,
     required String question,
-    required List<String> incorrect_awnsers,
+    required String correct_answer,
+    required List<String> incorrect_answers,
   }) = _Question;
   
     /// Creates a Question from Json map

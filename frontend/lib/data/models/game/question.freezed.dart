@@ -21,10 +21,11 @@ Question _$QuestionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Question {
   String get category => throw _privateConstructorUsedError;
-  String get correct_awnser => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   String get difficulty => throw _privateConstructorUsedError;
   String get question => throw _privateConstructorUsedError;
-  List<String> get incorrect_awnsers => throw _privateConstructorUsedError;
+  String get correct_answer => throw _privateConstructorUsedError;
+  List<String> get incorrect_answers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,10 +39,11 @@ abstract class $QuestionCopyWith<$Res> {
       _$QuestionCopyWithImpl<$Res>;
   $Res call(
       {String category,
-      String correct_awnser,
+      String type,
       String difficulty,
       String question,
-      List<String> incorrect_awnsers});
+      String correct_answer,
+      List<String> incorrect_answers});
 }
 
 /// @nodoc
@@ -55,19 +57,20 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
   @override
   $Res call({
     Object? category = freezed,
-    Object? correct_awnser = freezed,
+    Object? type = freezed,
     Object? difficulty = freezed,
     Object? question = freezed,
-    Object? incorrect_awnsers = freezed,
+    Object? correct_answer = freezed,
+    Object? incorrect_answers = freezed,
   }) {
     return _then(_value.copyWith(
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-      correct_awnser: correct_awnser == freezed
-          ? _value.correct_awnser
-          : correct_awnser // ignore: cast_nullable_to_non_nullable
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
       difficulty: difficulty == freezed
           ? _value.difficulty
@@ -77,9 +80,13 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
-      incorrect_awnsers: incorrect_awnsers == freezed
-          ? _value.incorrect_awnsers
-          : incorrect_awnsers // ignore: cast_nullable_to_non_nullable
+      correct_answer: correct_answer == freezed
+          ? _value.correct_answer
+          : correct_answer // ignore: cast_nullable_to_non_nullable
+              as String,
+      incorrect_answers: incorrect_answers == freezed
+          ? _value.incorrect_answers
+          : incorrect_answers // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
@@ -93,10 +100,11 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
   @override
   $Res call(
       {String category,
-      String correct_awnser,
+      String type,
       String difficulty,
       String question,
-      List<String> incorrect_awnsers});
+      String correct_answer,
+      List<String> incorrect_answers});
 }
 
 /// @nodoc
@@ -112,19 +120,20 @@ class __$$_QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? category = freezed,
-    Object? correct_awnser = freezed,
+    Object? type = freezed,
     Object? difficulty = freezed,
     Object? question = freezed,
-    Object? incorrect_awnsers = freezed,
+    Object? correct_answer = freezed,
+    Object? incorrect_answers = freezed,
   }) {
     return _then(_$_Question(
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-      correct_awnser: correct_awnser == freezed
-          ? _value.correct_awnser
-          : correct_awnser // ignore: cast_nullable_to_non_nullable
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
       difficulty: difficulty == freezed
           ? _value.difficulty
@@ -134,9 +143,13 @@ class __$$_QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
-      incorrect_awnsers: incorrect_awnsers == freezed
-          ? _value._incorrect_awnsers
-          : incorrect_awnsers // ignore: cast_nullable_to_non_nullable
+      correct_answer: correct_answer == freezed
+          ? _value.correct_answer
+          : correct_answer // ignore: cast_nullable_to_non_nullable
+              as String,
+      incorrect_answers: incorrect_answers == freezed
+          ? _value._incorrect_answers
+          : incorrect_answers // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
@@ -147,11 +160,12 @@ class __$$_QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
 class _$_Question implements _Question {
   const _$_Question(
       {required this.category,
-      required this.correct_awnser,
+      required this.type,
       required this.difficulty,
       required this.question,
-      required final List<String> incorrect_awnsers})
-      : _incorrect_awnsers = incorrect_awnsers;
+      required this.correct_answer,
+      required final List<String> incorrect_answers})
+      : _incorrect_answers = incorrect_answers;
 
   factory _$_Question.fromJson(Map<String, dynamic> json) =>
       _$$_QuestionFromJson(json);
@@ -159,21 +173,23 @@ class _$_Question implements _Question {
   @override
   final String category;
   @override
-  final String correct_awnser;
+  final String type;
   @override
   final String difficulty;
   @override
   final String question;
-  final List<String> _incorrect_awnsers;
   @override
-  List<String> get incorrect_awnsers {
+  final String correct_answer;
+  final List<String> _incorrect_answers;
+  @override
+  List<String> get incorrect_answers {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_incorrect_awnsers);
+    return EqualUnmodifiableListView(_incorrect_answers);
   }
 
   @override
   String toString() {
-    return 'Question(category: $category, correct_awnser: $correct_awnser, difficulty: $difficulty, question: $question, incorrect_awnsers: $incorrect_awnsers)';
+    return 'Question(category: $category, type: $type, difficulty: $difficulty, question: $question, correct_answer: $correct_answer, incorrect_answers: $incorrect_answers)';
   }
 
   @override
@@ -182,13 +198,14 @@ class _$_Question implements _Question {
         (other.runtimeType == runtimeType &&
             other is _$_Question &&
             const DeepCollectionEquality().equals(other.category, category) &&
-            const DeepCollectionEquality()
-                .equals(other.correct_awnser, correct_awnser) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality()
                 .equals(other.difficulty, difficulty) &&
             const DeepCollectionEquality().equals(other.question, question) &&
             const DeepCollectionEquality()
-                .equals(other._incorrect_awnsers, _incorrect_awnsers));
+                .equals(other.correct_answer, correct_answer) &&
+            const DeepCollectionEquality()
+                .equals(other._incorrect_answers, _incorrect_answers));
   }
 
   @JsonKey(ignore: true)
@@ -196,10 +213,11 @@ class _$_Question implements _Question {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(correct_awnser),
+      const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(difficulty),
       const DeepCollectionEquality().hash(question),
-      const DeepCollectionEquality().hash(_incorrect_awnsers));
+      const DeepCollectionEquality().hash(correct_answer),
+      const DeepCollectionEquality().hash(_incorrect_answers));
 
   @JsonKey(ignore: true)
   @override
@@ -217,23 +235,26 @@ class _$_Question implements _Question {
 abstract class _Question implements Question {
   const factory _Question(
       {required final String category,
-      required final String correct_awnser,
+      required final String type,
       required final String difficulty,
       required final String question,
-      required final List<String> incorrect_awnsers}) = _$_Question;
+      required final String correct_answer,
+      required final List<String> incorrect_answers}) = _$_Question;
 
   factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
 
   @override
   String get category;
   @override
-  String get correct_awnser;
+  String get type;
   @override
   String get difficulty;
   @override
   String get question;
   @override
-  List<String> get incorrect_awnsers;
+  String get correct_answer;
+  @override
+  List<String> get incorrect_answers;
   @override
   @JsonKey(ignore: true)
   _$$_QuestionCopyWith<_$_Question> get copyWith =>
