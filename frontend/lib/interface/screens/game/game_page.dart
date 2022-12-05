@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swiping_card_deck/swiping_card_deck.dart';
 import 'package:trivial_pursuit/data/database/firebase_questions_repository.dart';
+import 'package:trivial_pursuit/data/models/game/list_questions.dart';
 import 'package:trivial_pursuit/interface/screens/game/bloc/game_cubit.dart';
 import 'package:trivial_pursuit/interface/screens/game/bloc/question_bloc.dart';
 import 'package:trivial_pursuit/interface/screens/game/question_card.dart';
@@ -14,6 +15,22 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
+  late SwipingCardDeck _questionDeck;
+
+  SwipingCardDeck questionsDeck(ListQuestions questions) {
+    List<Card> questionCards = [];
+    for (var question in questions.results) {
+      questionCards.add(Card(child: QuestionCard(question: question)));
+    }
+    return SwipingCardDeck(
+      cardWidth: 200,
+      onDeckEmpty: () => const Text("No more questions to awnser !"),
+      onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
+      onRightSwipe: (Card card) => debugPrint("Swiped right!"),
+      cardDeck: questionCards,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
@@ -24,29 +41,17 @@ class _GamePageState extends State<GamePage> {
                   repository: RepositoryProvider.of<QuestionFirebase>(context));
               return cubit..fetchQuestion();
             },
-            child: BlocConsumer<GameCubit, QuestionState>(
-                listener: (_, state) {},
-                builder: (context, state) {
-                  if (state is Loaded) {
-                    List<Card> questionCards = [];
-                    for (var question in state.questions.results) {
-                      questionCards
-                          .add(Card(child: QuestionCard(question: question)));
-                    }
-
-                    return Center(
-                        child: SwipingCardDeck(
-                      cardWidth: 200,
-                      onDeckEmpty: () =>
-                          const Text("No more questions to awnser !"),
-                      onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
-                      onRightSwipe: (Card card) => debugPrint("Swiped right!"),
-                      cardDeck: questionCards,
-                    ));
-                    // QuestionCard(question: state.questions.results[5]));
-                  }
-                  return const Center(child: CircularProgressIndicator());
-                })));
+            child: BlocConsumer<GameCubit, QuestionState>(listener: (_, state) {
+              if (state is AnswerSelected) {
+                _questionDeck.swipeRight();
+              }
+            }, builder: (context, state) {
+              if (state is Loaded) {
+                _questionDeck = questionsDeck(state.questions);
+                return Center(child: _questionDeck);
+              }
+              return const Center(child: CircularProgressIndicator());
+            })));
   }
 }
 

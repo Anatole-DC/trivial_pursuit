@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:math' as math;
 
+import 'package:trivial_pursuit/interface/screens/game/bloc/game_cubit.dart';
+
 class AnwserButton extends StatefulWidget {
-  AnwserButton({super.key, required this.text});
+  AnwserButton({super.key, required this.text, this.goodAwnser = false});
 
   final String text;
+  final bool goodAwnser;
   final _random = math.Random();
 
   double getRandomNumber() {
@@ -21,6 +25,7 @@ class _AnwserButtonState extends State<AnwserButton> {
 
   @override
   Widget build(BuildContext context) {
+    final blocContext = context.read<GameCubit>();
     return GestureDetector(
       onTapDown: (_) {
         setState(() {
@@ -33,6 +38,7 @@ class _AnwserButtonState extends State<AnwserButton> {
         setState(() {
           _textColor = Colors.black;
           _backgroundColor = Colors.transparent;
+          blocContext.questionClicked(widget.goodAwnser);
         });
       },
 
