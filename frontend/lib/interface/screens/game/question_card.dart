@@ -16,7 +16,10 @@ class QuestionCard extends StatelessWidget {
     for (var awnser in incorrectAwnser) {
       awnsers.add(AnwserButton(text: unescape.convert(awnser)));
     }
-    awnsers.add(AnwserButton(text: unescape.convert(correctAwnser)));
+    awnsers.add(AnwserButton(
+      text: unescape.convert(correctAwnser),
+      goodAwnser: true,
+    ));
 
     awnsers.shuffle();
 
