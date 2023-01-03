@@ -19,6 +19,7 @@ class _GamePageState extends State<GamePage> {
 
   List<QuestionCard> questionsDeck(ListQuestions questions) {
     List<QuestionCard> questionCards = [];
+
     for (var question in questions.results) {
       questionCards.add(QuestionCard(question: question));
     }

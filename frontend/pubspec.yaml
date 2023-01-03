@@ -44,6 +44,7 @@ dependencies:
   freezed: ^2.1.1
   json_serializable: ^6.5.0
   flutter_bloc: ^8.1.1
+  html_unescape: ^2.0.0
 
 
 dev_dependencies:
