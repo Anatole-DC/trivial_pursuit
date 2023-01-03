@@ -15,21 +15,30 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
-  late SwipingCardDeck _questionDeck;
+  late List<QuestionCard> _questionDeck;
+  int currentQuestion = 0;
 
-  SwipingCardDeck questionsDeck(ListQuestions questions) {
-    List<Card> questionCards = [];
+  List<QuestionCard> questionsDeck(ListQuestions questions) {
+    List<QuestionCard> questionCards = [];
     for (var question in questions.results) {
-      questionCards.add(Card(child: QuestionCard(question: question)));
+      questionCards.add(QuestionCard(question: question));
     }
-    return SwipingCardDeck(
-      cardWidth: 200,
-      onDeckEmpty: () => const Text("No more questions to awnser !"),
-      onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
-      onRightSwipe: (Card card) => debugPrint("Swiped right!"),
-      cardDeck: questionCards,
-    );
+    return questionCards;
   }
+
+  // SwipingCardDeck questionsDeck(ListQuestions questions) {
+  //   List<Card> questionCards = [];
+  //   for (var question in questions.results) {
+  //     questionCards.add(Card(child: QuestionCard(question: question)));
+  //   }
+  //   return SwipingCardDeck(
+  //     cardWidth: 200,
+  //     onDeckEmpty: () => const Text("No more questions to awnser !"),
+  //     onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
+  //     onRightSwipe: (Card card) => debugPrint("Swiped right!"),
+  //     cardDeck: questionCards,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +52,16 @@ class _GamePageState extends State<GamePage> {
             },
             child: BlocConsumer<GameCubit, QuestionState>(listener: (_, state) {
               if (state is AnswerSelected) {
-                _questionDeck.swipeRight();
+                if (currentQuestion < _questionDeck.length) {
+                  currentQuestion++;
+                }
               }
             }, builder: (context, state) {
               if (state is Loaded) {
                 _questionDeck = questionsDeck(state.questions);
-                return Center(child: _questionDeck);
+                return Center(child: _questionDeck[currentQuestion]);
+              } else if (state is Error) {
+                return const Text("Game Over");
               }
               return const Center(child: CircularProgressIndicator());
             })));

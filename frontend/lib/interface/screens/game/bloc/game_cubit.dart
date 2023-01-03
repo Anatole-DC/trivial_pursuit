@@ -31,9 +31,10 @@ class GameCubit extends Cubit<QuestionState> {
   }
 
   void questionClicked(bool isGoodAwnser) {
+    currentQuestionIndex++;
+    emit(AnswerSelected(isGoodAwnser));
     if (currentQuestionIndex < questions.results.length) {
-      currentQuestionIndex += 1;
-      emit(AnswerSelected(isGoodAwnser));
+      emit(Loaded(questions));
     } else {
       emit(const Error("Game over"));
     }
