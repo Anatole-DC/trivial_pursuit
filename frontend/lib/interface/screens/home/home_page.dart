@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> pages = [
     const GamePage(),
-    const LeaderboardPage(),
+    LeaderboardPage(),
     ProfilePage()
   ];
 

@@ -1,4 +1,4 @@
-class Player {
+class Player implements Comparable<Player> {
   final String uid; // Firebase uid
   final String username; // Trivial Pursuit username
   final int score; // The score
@@ -18,4 +18,9 @@ class Player {
         'score': score,
         'lastDailyQuizz': lastDailyQuizz,
       };
+
+  @override
+  int compareTo(Player other) {
+    return other.score - score;
+  }
 }
