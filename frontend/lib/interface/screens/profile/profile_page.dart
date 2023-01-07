@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:trivial_pursuit/auth.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:trivial_pursuit/data/models/auth/player.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({super.key});
 
   final User? user = Auth().currentUser;
+  final Player? player = Auth().currentPlayer;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -17,7 +19,12 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _userId() {
-    return Text(widget.user?.email ?? 'User email',
+    return Text(widget.player?.username ?? 'User email',
+        style: const TextStyle(fontSize: 25));
+  }
+
+  Widget _userScore() {
+    return Text(widget.player?.score.toString() ?? 'User score',
         style: const TextStyle(fontSize: 25));
   }
 
@@ -75,14 +82,11 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
 
         const Text(
-          "LEADERBOARD",
+          "SCORE",
           style: TextStyle(fontSize: 35),
         ),
 
-        const Text(
-          "128",
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-        )
+        _userScore()
       ],
     ));
   }

@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trivial_pursuit/data/database/firebase_questions_repository.dart';
+import 'package:trivial_pursuit/data/database/questions/firebase_questions_repository.dart';
 import 'package:trivial_pursuit/data/models/game/list_questions.dart';
 import 'package:trivial_pursuit/interface/screens/game/bloc/question_bloc.dart';
 

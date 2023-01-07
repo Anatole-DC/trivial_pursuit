@@ -3,7 +3,7 @@ import 'package:trivial_pursuit/interface/screens/game/game_page.dart';
 import 'package:trivial_pursuit/interface/screens/leaderboard/leaderboard_page.dart';
 import 'package:trivial_pursuit/interface/screens/profile/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:trivial_pursuit/auth.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});

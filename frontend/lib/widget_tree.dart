@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trivial_pursuit/auth.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 import 'package:trivial_pursuit/interface/screens/authentication/login_screen.dart';
 import 'package:trivial_pursuit/interface/screens/home/home_page.dart';
 

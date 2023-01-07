@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:trivial_pursuit/auth.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,6 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isLogin = true;
 
   final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerUsername = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
 
   Future<void> signInWithEmailAndPassword() async {
@@ -30,7 +31,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> createUserWithEmailAndPassword() async {
     try {
       await Auth().createUserWithEmailAndPassword(
-          email: _controllerEmail.text, password: _controllerPassword.text);
+          email: _controllerEmail.text,
+          username: _controllerUsername.text,
+          password: _controllerPassword.text);
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -83,6 +86,29 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
+  List<Widget> _fields() {
+    List<Widget> fields = [
+      const SizedBox(
+        height: 10,
+      ),
+      _entryField('email', _controllerEmail),
+    ];
+
+    if (!isLogin) {
+      fields.add(const SizedBox(
+        height: 10,
+      ));
+      fields.add(_entryField('username', _controllerUsername));
+    }
+
+    fields.add(const SizedBox(
+      height: 10,
+    ));
+    fields.add(_entryField('password', _controllerPassword));
+
+    return fields;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,14 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              _entryField('email', _controllerEmail),
-              const SizedBox(
-                height: 10,
-              ),
-              _entryField('password', _controllerPassword),
+              ..._fields(),
               _errorMessage(),
               _submitButton(),
               _loginOrRegisterButton()
