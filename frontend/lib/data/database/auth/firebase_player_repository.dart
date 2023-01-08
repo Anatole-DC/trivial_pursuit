@@ -32,12 +32,17 @@ class PlayerFirebase {
 
   Future<void> createPlayer(Player player) async {
     await _playerRef.doc(player.uid).set(player);
-    await getPlayer(player.uid);
+    await getPlayer(player.uid ?? "null");
   }
 
   Future<Player> getPlayer(String uid) async {
     DocumentSnapshot<Player> response = await _playerRef.doc(uid).get();
     currentPlayer = response.data()!;
     return currentPlayer!;
+  }
+
+  Future<List<Player>> getAllPlayer() async {
+    var response = await _playerRef.orderBy("score", descending: true).get();
+    return response.docs.map((e) => e.data()).toList();
   }
 }

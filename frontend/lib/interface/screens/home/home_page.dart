@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_player_repository.dart';
+import 'package:trivial_pursuit/data/models/auth/player.dart';
 import 'package:trivial_pursuit/interface/screens/game/game_page.dart';
 import 'package:trivial_pursuit/interface/screens/leaderboard/leaderboard_page.dart';
 import 'package:trivial_pursuit/interface/screens/profile/profile_page.dart';
@@ -9,6 +11,7 @@ class HomePage extends StatefulWidget {
   HomePage({super.key});
 
   final User? user = Auth().currentUser;
+  final PlayerFirebase _playerFirebase = PlayerFirebase.getInstance();
 
   Future<void> signOut() async {
     await Auth().signOut();
@@ -33,6 +36,18 @@ class _HomePageState extends State<HomePage> {
     ProfilePage()
   ];
 
+  Widget _mainContent() {
+    return FutureBuilder<Player>(
+        future: widget._playerFirebase.getPlayer(widget.user!.uid),
+        builder: (context, AsyncSnapshot<Player> snapshot) {
+          if (snapshot.hasData) {
+            return pages[_currentIndex];
+          } else {
+            return const CircularProgressIndicator();
+          }
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     void navigate(int index) {
@@ -44,7 +59,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       //Pages
       body: SafeArea(
-        child: pages[_currentIndex],
+        child: _mainContent(),
       ),
 
       // Bottom navigation bar

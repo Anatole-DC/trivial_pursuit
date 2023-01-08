@@ -1,6 +1,6 @@
 class Player implements Comparable<Player> {
-  final String uid; // Firebase uid
-  final String username; // Trivial Pursuit username
+  final String? uid; // Firebase uid
+  final String? username; // Trivial Pursuit username
   final int score; // The score
   final DateTime? lastDailyQuizz; // The last daily quizz performed
 
