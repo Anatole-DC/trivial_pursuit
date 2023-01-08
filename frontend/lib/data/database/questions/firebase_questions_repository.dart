@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_player_repository.dart';
 import 'package:trivial_pursuit/data/database/questions/trivial_pursuit_repository.dart';
 import 'package:trivial_pursuit/data/models/game/list_questions.dart';
 

@@ -1,8 +1,8 @@
 class Player implements Comparable<Player> {
   final String? uid; // Firebase uid
   final String? username; // Trivial Pursuit username
-  final int score; // The score
-  final DateTime? lastDailyQuizz; // The last daily quizz performed
+  int score; // The score
+  String? lastDailyQuizz; // The last daily quizz performed
 
   Player(this.username, this.uid, this.score, this.lastDailyQuizz);
 
@@ -18,6 +18,10 @@ class Player implements Comparable<Player> {
         'score': score,
         'lastDailyQuizz': lastDailyQuizz,
       };
+
+  void setScore(int score) {
+    this.score = score;
+  }
 
   @override
   int compareTo(Player other) {

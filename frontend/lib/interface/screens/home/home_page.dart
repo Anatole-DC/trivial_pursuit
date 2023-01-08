@@ -30,11 +30,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final double _bottomNavigationIconSize = 25.0;
 
-  final List<Widget> pages = [
-    const GamePage(),
-    LeaderboardPage(),
-    ProfilePage()
-  ];
+  final List<Widget> pages = [GamePage(), LeaderboardPage(), ProfilePage()];
 
   Widget _mainContent() {
     return FutureBuilder<Player>(

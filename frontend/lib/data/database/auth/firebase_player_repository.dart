@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 import 'package:trivial_pursuit/data/models/auth/player.dart';
 
 class PlayerFirebase {
@@ -16,9 +17,22 @@ class PlayerFirebase {
     return currentPlayer;
   }
 
+  String _getDate() {
+    DateTime today = DateTime.now();
+    return '${today.year}-${today.month}-${today.day}';
+  }
+
   static late CollectionReference<Player> _playerRef;
 
   PlayerFirebase._();
+
+  Future<void> updatePlayerScore(String uid, String score) async {
+    Player player = await getPlayer(uid);
+    player.score += int.parse(score);
+    player.lastDailyQuizz = _getDate();
+    await createPlayer(player);
+    return;
+  }
 
   static PlayerFirebase getInstance() {
     if (_instance == null) {
@@ -33,6 +47,14 @@ class PlayerFirebase {
   Future<void> createPlayer(Player player) async {
     await _playerRef.doc(player.uid).set(player);
     await getPlayer(player.uid ?? "null");
+    return;
+  }
+
+  Future<Player> getUserPlayer() async {
+    DocumentSnapshot<Player> response =
+        await _playerRef.doc(Auth().currentUser!.uid).get();
+
+    return response.data()!;
   }
 
   Future<Player> getPlayer(String uid) async {
