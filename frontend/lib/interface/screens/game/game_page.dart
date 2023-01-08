@@ -1,14 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swiping_card_deck/swiping_card_deck.dart';
-import 'package:trivial_pursuit/data/database/firebase_questions_repository.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_player_repository.dart';
+import 'package:trivial_pursuit/data/database/questions/firebase_questions_repository.dart';
+import 'package:trivial_pursuit/data/models/auth/player.dart';
 import 'package:trivial_pursuit/data/models/game/list_questions.dart';
 import 'package:trivial_pursuit/interface/screens/game/bloc/game_cubit.dart';
 import 'package:trivial_pursuit/interface/screens/game/bloc/question_bloc.dart';
 import 'package:trivial_pursuit/interface/screens/game/question_card.dart';
 
 class GamePage extends StatefulWidget {
-  const GamePage({super.key});
+  GamePage({super.key});
+
+  final PlayerFirebase _playerFirebase = PlayerFirebase.getInstance();
+  final User? user = Auth().currentUser;
+  final Player? player = Auth().currentPlayer;
 
   @override
   State<GamePage> createState() => _GamePageState();
@@ -20,25 +27,12 @@ class _GamePageState extends State<GamePage> {
 
   List<QuestionCard> questionsDeck(ListQuestions questions) {
     List<QuestionCard> questionCards = [];
+
     for (var question in questions.results) {
       questionCards.add(QuestionCard(question: question));
     }
     return questionCards;
   }
-
-  // SwipingCardDeck questionsDeck(ListQuestions questions) {
-  //   List<Card> questionCards = [];
-  //   for (var question in questions.results) {
-  //     questionCards.add(Card(child: QuestionCard(question: question)));
-  //   }
-  //   return SwipingCardDeck(
-  //     cardWidth: 200,
-  //     onDeckEmpty: () => const Text("No more questions to awnser !"),
-  //     onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
-  //     onRightSwipe: (Card card) => debugPrint("Swiped right!"),
-  //     cardDeck: questionCards,
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,58 +55,14 @@ class _GamePageState extends State<GamePage> {
                 _questionDeck = questionsDeck(state.questions);
                 return Center(child: _questionDeck[currentQuestion]);
               } else if (state is Error) {
-                return const Text("Game Over");
+                return FutureBuilder<void>(
+                    future: widget._playerFirebase
+                        .updatePlayerScore(widget.user!.uid, state.message),
+                    builder: (context, AsyncSnapshot<void> snapshot) {
+                      return const Text("Game is over !");
+                    });
               }
               return const Center(child: CircularProgressIndicator());
             })));
   }
 }
-
-// return Center(
-//                         child: Column(
-//                       children: [
-//                         const SizedBox(
-//                           height: 50,
-//                         ),
-//                         Container(
-//                           constraints: const BoxConstraints(maxWidth: 275),
-//                           child: Text(
-//                             state.questions.results[0].question.toString(),
-//                             textAlign: TextAlign.center,
-//                             style: const TextStyle(
-//                                 fontSize: 40, fontWeight: FontWeight.bold),
-//                           ),
-//                         ),
-
-//                         // Awnsers
-//                         const SizedBox(
-//                           height: 75,
-//                         ),
-
-//                         Column(
-//                           children: [
-//                             Row(
-//                                 mainAxisAlignment: MainAxisAlignment.center,
-//                                 children: [
-//                                   AnwserButton(text: "1950"),
-//                                   const SizedBox(
-//                                     width: 75,
-//                                   ),
-//                                   AnwserButton(text: "1979")
-//                                 ]),
-//                             const SizedBox(
-//                               height: 40,
-//                             ),
-//                             Row(
-//                                 mainAxisAlignment: MainAxisAlignment.center,
-//                                 children: [
-//                                   AnwserButton(text: "2004"),
-//                                   const SizedBox(
-//                                     width: 75,
-//                                   ),
-//                                   AnwserButton(text: "1998")
-//                                 ])
-//                           ],
-//                         ),
-//                       ],
-//                     ));

@@ -30,7 +30,11 @@ class _AnwserButtonState extends State<AnwserButton> {
       onTapDown: (_) {
         setState(() {
           _textColor = Colors.white;
-          _backgroundColor = Colors.black;
+          if (widget.goodAwnser) {
+            _backgroundColor = Colors.green;
+          } else {
+            _backgroundColor = Colors.red;
+          }
         });
       },
 

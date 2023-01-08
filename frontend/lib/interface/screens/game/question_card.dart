@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:html_unescape/html_unescape_small.dart';
 import 'package:trivial_pursuit/data/models/game/question.dart';
 import 'package:trivial_pursuit/interface/screens/game/anwser_button.dart';
 
 class QuestionCard extends StatelessWidget {
-  const QuestionCard({super.key, required this.question});
+  QuestionCard({super.key, required this.question});
 
   final Question question;
+  final unescape = HtmlUnescape();
 
   List<AnwserButton> awnsers(
       List<String> incorrectAwnser, String correctAwnser) {
     List<AnwserButton> awnsers = [];
 
     for (var awnser in incorrectAwnser) {
-      awnsers.add(AnwserButton(text: awnser));
+      awnsers.add(AnwserButton(text: unescape.convert(awnser)));
     }
-    awnsers.add(AnwserButton(text: correctAwnser));
+    awnsers.add(AnwserButton(
+      text: unescape.convert(correctAwnser),
+      goodAwnser: true,
+    ));
 
     awnsers.shuffle();
 
@@ -29,7 +34,7 @@ class QuestionCard extends StatelessWidget {
         Container(
             constraints: const BoxConstraints(maxWidth: 275),
             child: Text(
-              question.question,
+              unescape.convert(question.question),
               textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             )),
