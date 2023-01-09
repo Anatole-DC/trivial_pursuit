@@ -5,7 +5,7 @@ import 'package:trivial_pursuit/data/controller/authentication_controller.dart';
 import 'package:trivial_pursuit/helper/navigation.dart';
 import 'package:trivial_pursuit/interface/screens/auth/authentication_page.dart';
 import 'package:trivial_pursuit/interface/screens/config/profile_page.dart';
-import 'package:trivial_pursuit/interface/screens/home/games/daily_quizz_game_page.dart';
+import 'package:trivial_pursuit/interface/screens/home/games/daily/daily_quizz_game_page.dart';
 import 'package:trivial_pursuit/interface/screens/home/games/online_game_page.dart';
 import 'package:trivial_pursuit/interface/screens/home/games/private_game_page.dart';
 import 'package:trivial_pursuit/interface/screens/home/games/shootarrond_questions_game_page.dart';

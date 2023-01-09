@@ -11,13 +11,25 @@ class Question {
   Question(this.category, this.type, this.difficulty, this.question,
       this.correct_answer, this.incorrect_answers);
 
+  static List<Question> loadListFromJson(Map<String, dynamic> json) {
+    return (json['results'] as List<dynamic>)
+        .map((e) => Question.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  static Map<String, dynamic> loadListToJson(List<Question> questions) {
+    return {'results': questions.map((e) => e.toJson()).toList()};
+  }
+
   Question.fromJson(Map<String, dynamic> json)
       : category = json['category'],
         type = json['type'],
         difficulty = json['difficulty'],
         question = json['question'],
         correct_answer = json['correct_answer'],
-        incorrect_answers = json['incorrect_answers'];
+        incorrect_answers = (json['incorrect_answers'] as List<dynamic>)
+            .map((e) => e as String)
+            .toList();
 
   Map<String, dynamic> toJson() => {
         'category': category,

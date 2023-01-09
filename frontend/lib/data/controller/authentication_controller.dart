@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:trivial_pursuit/data/database/firebase_authentication_repository.dart';
-import 'package:trivial_pursuit/data/database/firebase_player_repository.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_authentication_repository.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_player_repository.dart';
 import 'package:trivial_pursuit/data/models/auth/player.dart';
 
 class AuthenticationController {
