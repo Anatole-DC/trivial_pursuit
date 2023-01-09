@@ -5,20 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Trivial Pursuit",
+            "name": "frontend",
             "cwd": "frontend",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "Trivial Pursuit (profile mode)",
+            "name": "frontend (profile mode)",
             "cwd": "frontend",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "Trivial Pursuit (release mode)",
+            "name": "frontend (release mode)",
             "cwd": "frontend",
             "request": "launch",
             "type": "dart",

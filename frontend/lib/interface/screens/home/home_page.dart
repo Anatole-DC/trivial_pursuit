@@ -1,85 +1,88 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:trivial_pursuit/helper/navigation.dart';
-import 'package:trivial_pursuit/interface/common/trivial_pursuit_navigation_bar.dart';
-import 'dart:math' as math;
+import 'package:trivial_pursuit/data/database/auth/firebase_player_repository.dart';
+import 'package:trivial_pursuit/data/models/auth/player.dart';
+import 'package:trivial_pursuit/interface/screens/game/game_page.dart';
+import 'package:trivial_pursuit/interface/screens/leaderboard/leaderboard_page.dart';
+import 'package:trivial_pursuit/interface/screens/profile/profile_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final User? user = Auth().currentUser;
+  final PlayerFirebase _playerFirebase = PlayerFirebase.getInstance();
+
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
+
+  // The following methods will have to be moved to the profile section
+  Widget _title() {
+    return const Text('Firebase Auth');
+  }
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final _random = math.Random();
-  final double _iconSize = 50;
+  int _currentIndex = 0;
+  final double _bottomNavigationIconSize = 25.0;
 
-  double getRandomNumber() {
-    return (-3 + _random.nextInt(6)) * math.pi / 180;
-  }
+  final List<Widget> pages = [GamePage(), LeaderboardPage(), ProfilePage()];
 
-  Widget _game(String label, Icon icon, GameRoutes route) {
-    return Transform.rotate(
-      angle: getRandomNumber(),
-      // The actual awnser button
-      child: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 10.0),
-          child: InkWell(
-            onTap: () {
-              GoRouter.of(context).goNamed(route.name);
-            },
-            child: Ink(
-                width: MediaQuery.of(context).devicePixelRatio * 100,
-                padding: const EdgeInsets.symmetric(vertical: 3),
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    border: Border.all(color: Colors.black, width: 2.5),
-                    borderRadius: const BorderRadius.all(Radius.circular(10))),
-                child: Center(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        icon,
-                        Text(
-                          label,
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600),
-                        )
-                      ]),
-                )),
-          ),
-        ),
-      ),
-    );
-  }
-
-  List<Widget> _games() {
-    return [
-      _game("Daily Quizz", Icon(Icons.calendar_month, size: _iconSize),
-          GameRoutes.dailyQuizz),
-      _game("Questions", Icon(Icons.question_mark, size: _iconSize),
-          GameRoutes.shootarroundQuestions),
-      _game("Online Game", Icon(Icons.wifi, size: _iconSize),
-          GameRoutes.onlineGame),
-      _game("Private Game", Icon(Icons.private_connectivity, size: _iconSize),
-          GameRoutes.privateGame)
-    ];
+  Widget _mainContent() {
+    return FutureBuilder<Player>(
+        future: widget._playerFirebase.getPlayer(widget.user!.uid),
+        builder: (context, AsyncSnapshot<Player> snapshot) {
+          if (snapshot.hasData) {
+            return pages[_currentIndex];
+          } else {
+            return const CircularProgressIndicator();
+          }
+        });
   }
 
   @override
   Widget build(BuildContext context) {
+    void navigate(int index) {
+      setState(() {
+        _currentIndex = index;
+      });
+    }
+
     return Scaffold(
-        body: SafeArea(
-          child: Center(
-              child: ListView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  children: [..._games()])),
-        ),
-        bottomNavigationBar: const TrivialPursuitNavigationBar());
+      //Pages
+      body: SafeArea(
+        child: _mainContent(),
+      ),
+
+      // Bottom navigation bar
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        selectedItemColor: Colors.black,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        unselectedItemColor: const Color.fromARGB(255, 180, 180, 180),
+        currentIndex: _currentIndex,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.games,
+                size: _bottomNavigationIconSize,
+              ),
+              label: 'Game'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list, size: _bottomNavigationIconSize),
+              label: 'Leaderboard'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person, size: _bottomNavigationIconSize),
+              label: 'Profile')
+        ],
+        onTap: (index) => {navigate(index)},
+      ),
+    );
   }
 }
