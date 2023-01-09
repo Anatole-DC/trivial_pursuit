@@ -27,7 +27,9 @@ class Question {
         difficulty = json['difficulty'],
         question = json['question'],
         correct_answer = json['correct_answer'],
-        incorrect_answers = json['incorrect_answers'];
+        incorrect_answers = (json['incorrect_answers'] as List<dynamic>)
+            .map((e) => e as String)
+            .toList();
 
   Map<String, dynamic> toJson() => {
         'category': category,
