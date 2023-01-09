@@ -18,7 +18,7 @@ class _TrivialPursuitNavigationBarState
 
   int _locationIndexFromString(String location) {
     final index =
-        Routes.values.indexWhere((element) => element.toString() == location);
+        Routes.values.indexWhere((element) => element.name == location);
     return index < 0 ? 0 : index;
   }
 
@@ -30,7 +30,7 @@ class _TrivialPursuitNavigationBarState
         selectedItemColor: Colors.black,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        unselectedItemColor: const Color.fromARGB(255, 180, 180, 180),
+        unselectedItemColor: const Color.fromARGB(255, 214, 214, 214),
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
@@ -44,6 +44,6 @@ class _TrivialPursuitNavigationBarState
               label: 'Profile')
         ],
         onTap: (index) =>
-            GoRouter.of(context).goNamed(Routes.values[index].toString()));
+            GoRouter.of(context).goNamed(Routes.values[index].name));
   }
 }

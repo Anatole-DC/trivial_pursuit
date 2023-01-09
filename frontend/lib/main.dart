@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trivial_pursuit/helper/navigation.dart';
 import 'package:trivial_pursuit/interface/screens/config/profile_page.dart';
+import 'package:trivial_pursuit/interface/screens/home/games/daily_quizz_game_page.dart';
+import 'package:trivial_pursuit/interface/screens/home/games/online_game_page.dart';
+import 'package:trivial_pursuit/interface/screens/home/games/private_game_page.dart';
+import 'package:trivial_pursuit/interface/screens/home/games/shootarrond_questions_game_page.dart';
 import 'package:trivial_pursuit/interface/screens/home/home_page.dart';
 import 'package:trivial_pursuit/interface/screens/leaderboard/leaderboard_page.dart';
 
@@ -14,18 +18,39 @@ class MyApp extends StatelessWidget {
 
   final GoRouter _router = GoRouter(routes: [
     GoRoute(
-      path: "/",
-      name: Routes.homePage.toString(),
-      builder: (context, state) => const HomePage(),
-    ),
+        path: "/",
+        name: Routes.homePage.name,
+        builder: (context, state) => const HomePage(),
+        routes: [
+          GoRoute(
+            path: "dailyQuizz",
+            name: GameRoutes.dailyQuizz.name,
+            builder: (context, state) => const DailyQuizzGamePage(),
+          ),
+          GoRoute(
+            path: "shootarroundQuestions",
+            name: GameRoutes.shootarroundQuestions.name,
+            builder: (context, state) => const ShootarroundQuestionsGamePage(),
+          ),
+          GoRoute(
+            path: "onlineGame",
+            name: GameRoutes.onlineGame.name,
+            builder: (context, state) => const OnlineGamePage(),
+          ),
+          GoRoute(
+            path: "privateGame",
+            name: GameRoutes.privateGame.name,
+            builder: (context, state) => const PrivateGamePage(),
+          ),
+        ]),
     GoRoute(
       path: "/leaderboard",
-      name: Routes.leaderboardPage.toString(),
+      name: Routes.leaderboardPage.name,
       builder: (context, state) => const LeaderboardPage(),
     ),
     GoRoute(
       path: "/profile",
-      name: Routes.profilePage.toString(),
+      name: Routes.profilePage.name,
       builder: (context, state) => const ProfilePage(),
     )
   ]);
@@ -36,8 +61,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Trivial Pursuit',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primaryColor: Colors.black,
+          backgroundColor: const Color.fromARGB(255, 233, 233, 233),
+          fontFamily: "PatrickHand"),
       routerConfig: _router,
     );
   }
