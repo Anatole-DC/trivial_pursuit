@@ -64,9 +64,9 @@ class _HomePageState extends State<HomePage> {
       _game("Questions", Icon(Icons.question_mark, size: _iconSize),
           GameRoutes.shootarroundQuestions),
       _game("Online Game", Icon(Icons.wifi, size: _iconSize),
-          GameRoutes.dailyQuizz),
+          GameRoutes.onlineGame),
       _game("Private Game", Icon(Icons.private_connectivity, size: _iconSize),
-          GameRoutes.shootarroundQuestions)
+          GameRoutes.privateGame)
     ];
   }
 
