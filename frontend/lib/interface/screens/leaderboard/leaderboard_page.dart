@@ -13,7 +13,8 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: Text(GoRouter.of(context).location)),
+        body:
+            SafeArea(child: Center(child: Text(GoRouter.of(context).location))),
         bottomNavigationBar: const TrivialPursuitNavigationBar());
   }
 }
