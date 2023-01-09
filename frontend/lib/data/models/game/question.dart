@@ -1,24 +1,30 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class Question {
+  String category;
+  String type;
+  String difficulty;
+  String question;
+  // ignore: non_constant_identifier_names
+  String correct_answer;
+  // ignore: non_constant_identifier_names
+  List<String> incorrect_answers;
 
-part 'question.freezed.dart';
-part 'question.g.dart';
+  Question(this.category, this.type, this.difficulty, this.question,
+      this.correct_answer, this.incorrect_answers);
 
-/// {@template question}
-/// Question description
-/// {@endtemplate}
-@freezed
-class Question with _$Question {
-  /// {@macro question}
-  const factory Question({
-    required String category,
-    required String type,
-    required String difficulty,
-    required String question,
-    required String correct_answer,
-    required List<String> incorrect_answers,
-  }) = _Question;
+  Question.fromJson(Map<String, dynamic> json)
+      : category = json['category'],
+        type = json['type'],
+        difficulty = json['difficulty'],
+        question = json['question'],
+        correct_answer = json['correct_answer'],
+        incorrect_answers = json['incorrect_answers'];
 
-  /// Creates a Question from Json map
-  factory Question.fromJson(Map<String, dynamic> data) =>
-      _$QuestionFromJson(data);
+  Map<String, dynamic> toJson() => {
+        'category': category,
+        'type': type,
+        'difficulty': difficulty,
+        'question': question,
+        'correct_answer': correct_answer,
+        'incorrect_answer': incorrect_answers
+      };
 }

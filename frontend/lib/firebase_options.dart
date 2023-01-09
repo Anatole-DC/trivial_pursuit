@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBt8e21ni5UYIB2fkybzHiXBkWo-K6UpGs',
-    appId: '1:8920138998:android:4207731f8afba674afd8d7',
+    appId: '1:8920138998:android:6d5bd72f071a696bafd8d7',
     messagingSenderId: '8920138998',
     projectId: 'trivial-pursuit-6115d',
     storageBucket: 'trivial-pursuit-6115d.appspot.com',
