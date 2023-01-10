@@ -26,9 +26,9 @@ class PlayerFirebase {
 
   PlayerFirebase._();
 
-  Future<void> updatePlayerScore(String uid, String score) async {
+  Future<void> updatePlayerScore(String uid, int score) async {
     Player player = await getPlayer(uid);
-    player.score += int.parse(score);
+    player.score += score;
     player.lastDailyQuizz = _getDate();
     await createPlayer(player);
     return;

@@ -7,14 +7,14 @@ class Player implements Comparable<Player> {
   Player(this.username, this.uid, this.score, this.lastDailyQuizz);
 
   Player.fromJson(Map<String, dynamic> json)
-      : username = json['username'],
+      : username = json['pseudo'],
         score = json['score'],
         lastDailyQuizz = json['lastDailyQuizz'],
         uid = json['uid'];
 
   Map<String, dynamic> toJson() => {
         'uid': uid,
-        'username': username,
+        'pseudo': username,
         'score': score,
         'lastDailyQuizz': lastDailyQuizz,
       };
