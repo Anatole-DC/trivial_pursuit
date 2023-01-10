@@ -52,7 +52,7 @@ class _AnwserButtonState extends State<AnwserButton> {
         angle: widget.getRandomNumber(),
         // The actual awnser button
         child: Container(
-          // margin: const EdgeInsets.all(15.0),
+          margin: const EdgeInsets.symmetric(vertical: 10.0),
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 7),
           decoration: BoxDecoration(
               color: _backgroundColor,

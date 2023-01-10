@@ -67,7 +67,13 @@ class _GamePageState extends State<GamePage> {
                     future: widget._playerFirebase
                         .updatePlayerScore(widget.user!.uid, state.score),
                     builder: (context, AsyncSnapshot<void> snapshot) {
-                      return const Center(child: Text("Game is over !"));
+                      return Center(
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                            const Text("Game Over !"),
+                            Text("Score : ${state.score}")
+                          ]));
                     });
               } else if (state is DisplayerAnswer) {
                 return Center(
