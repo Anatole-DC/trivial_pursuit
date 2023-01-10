@@ -41,7 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  Widget _entryField(String title, TextEditingController controller) {
+  Widget _entryField(String title, TextEditingController controller,
+      [bool confidential = false]) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       decoration: BoxDecoration(
@@ -49,6 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
           border: Border.all(color: Colors.black, width: 2.5),
           borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: TextField(
+        obscureText: confidential,
         controller: controller,
         decoration: InputDecoration(
             labelText: title,
@@ -104,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
     fields.add(const SizedBox(
       height: 10,
     ));
-    fields.add(_entryField('password', _controllerPassword));
+    fields.add(_entryField('password', _controllerPassword, true));
 
     return fields;
   }
