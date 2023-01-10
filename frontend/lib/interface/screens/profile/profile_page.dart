@@ -22,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _userId() {
     return Text(widget.player?.username ?? 'User email',
-        style: const TextStyle(fontSize: 25));
+        style: const TextStyle(fontSize: 50));
   }
 
   Widget _userScore() {
@@ -54,16 +54,16 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
 
-                const SizedBox(
-                  height: 30,
-                ),
+                // const SizedBox(
+                //   height: 30,
+                // ),
 
                 // Profile picture
-                const CircleAvatar(
-                  radius: 70,
-                  backgroundImage:
-                      AssetImage('assets/images/profile_picture.jpeg'),
-                ),
+                // const CircleAvatar(
+                //   radius: 70,
+                //   backgroundImage:
+                //       AssetImage('assets/images/profile_picture.jpeg'),
+                // ),
 
                 const SizedBox(
                   height: 20,
@@ -76,12 +76,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(
                       width: 10,
                     ),
-                    const IconButton(
-                        onPressed: null,
-                        icon: Icon(
-                          Icons.draw_sharp,
-                          size: 30,
-                        ))
+                    // const IconButton(
+                    //     onPressed: null,
+                    //     icon: Icon(
+                    //       Icons.draw_sharp,
+                    //       size: 30,
+                    //     ))
                   ],
                 ),
 
