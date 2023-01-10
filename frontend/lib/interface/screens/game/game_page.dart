@@ -54,13 +54,16 @@ class _GamePageState extends State<GamePage> {
               if (state is Loaded) {
                 _questionDeck = questionsDeck(state.questions);
                 return Center(child: _questionDeck[currentQuestion]);
-              } else if (state is Error) {
+              } else if (state is GameOver) {
                 return FutureBuilder<void>(
                     future: widget._playerFirebase
-                        .updatePlayerScore(widget.user!.uid, state.message),
+                        .updatePlayerScore(widget.user!.uid, state.score),
                     builder: (context, AsyncSnapshot<void> snapshot) {
-                      return const Text("Game is over !");
+                      return const Center(child: Text("Game is over !"));
                     });
+              } else if (state is GameAlreadyPlayed) {
+                return const Center(
+                    child: Text("You already played, come back tomorrow !"));
               }
               return const Center(child: CircularProgressIndicator());
             })));

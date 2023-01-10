@@ -37,7 +37,7 @@ class GameCubit extends Cubit<QuestionState> {
     try {
       Player player = await _playerFirebase.getUserPlayer();
       if (player.lastDailyQuizz == _getDate()) {
-        emit(const Error("0"));
+        emit(const GameAlreadyPlayed());
       } else {
         questions = await repository.getQuestionsOfTheDay();
         emit(Loaded(questions));
@@ -56,7 +56,7 @@ class GameCubit extends Cubit<QuestionState> {
     if (currentQuestionIndex < questions.results.length) {
       emit(Loaded(questions));
     } else {
-      emit(Error(score.toString()));
+      emit(GameOver(score));
     }
   }
 }

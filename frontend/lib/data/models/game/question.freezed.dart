@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'question.dart';
 
@@ -36,8 +36,7 @@ mixin _$Question {
 /// @nodoc
 abstract class $QuestionCopyWith<$Res> {
   factory $QuestionCopyWith(Question value, $Res Function(Question) then) =
-      _$QuestionCopyWithImpl<$Res, Question>;
-  @useResult
+      _$QuestionCopyWithImpl<$Res>;
   $Res call(
       {String category,
       String type,
@@ -48,51 +47,48 @@ abstract class $QuestionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QuestionCopyWithImpl<$Res, $Val extends Question>
-    implements $QuestionCopyWith<$Res> {
+class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
   _$QuestionCopyWithImpl(this._value, this._then);
 
+  final Question _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(Question) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
-    Object? type = null,
-    Object? difficulty = null,
-    Object? question = null,
-    Object? correct_answer = null,
-    Object? incorrect_answers = null,
+    Object? category = freezed,
+    Object? type = freezed,
+    Object? difficulty = freezed,
+    Object? question = freezed,
+    Object? correct_answer = freezed,
+    Object? incorrect_answers = freezed,
   }) {
     return _then(_value.copyWith(
-      category: null == category
+      category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
+      type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      difficulty: null == difficulty
+      difficulty: difficulty == freezed
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as String,
-      question: null == question
+      question: question == freezed
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
-      correct_answer: null == correct_answer
+      correct_answer: correct_answer == freezed
           ? _value.correct_answer
           : correct_answer // ignore: cast_nullable_to_non_nullable
               as String,
-      incorrect_answers: null == incorrect_answers
+      incorrect_answers: incorrect_answers == freezed
           ? _value.incorrect_answers
           : incorrect_answers // ignore: cast_nullable_to_non_nullable
               as List<String>,
-    ) as $Val);
+    ));
   }
 }
 
@@ -102,7 +98,6 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
           _$_Question value, $Res Function(_$_Question) then) =
       __$$_QuestionCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {String category,
       String type,
@@ -113,45 +108,46 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_QuestionCopyWithImpl<$Res>
-    extends _$QuestionCopyWithImpl<$Res, _$_Question>
+class __$$_QuestionCopyWithImpl<$Res> extends _$QuestionCopyWithImpl<$Res>
     implements _$$_QuestionCopyWith<$Res> {
   __$$_QuestionCopyWithImpl(
       _$_Question _value, $Res Function(_$_Question) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Question));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_Question get _value => super._value as _$_Question;
+
   @override
   $Res call({
-    Object? category = null,
-    Object? type = null,
-    Object? difficulty = null,
-    Object? question = null,
-    Object? correct_answer = null,
-    Object? incorrect_answers = null,
+    Object? category = freezed,
+    Object? type = freezed,
+    Object? difficulty = freezed,
+    Object? question = freezed,
+    Object? correct_answer = freezed,
+    Object? incorrect_answers = freezed,
   }) {
     return _then(_$_Question(
-      category: null == category
+      category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
+      type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      difficulty: null == difficulty
+      difficulty: difficulty == freezed
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as String,
-      question: null == question
+      question: question == freezed
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
-      correct_answer: null == correct_answer
+      correct_answer: correct_answer == freezed
           ? _value.correct_answer
           : correct_answer // ignore: cast_nullable_to_non_nullable
               as String,
-      incorrect_answers: null == incorrect_answers
+      incorrect_answers: incorrect_answers == freezed
           ? _value._incorrect_answers
           : incorrect_answers // ignore: cast_nullable_to_non_nullable
               as List<String>,
@@ -187,8 +183,6 @@ class _$_Question implements _Question {
   final List<String> _incorrect_answers;
   @override
   List<String> get incorrect_answers {
-    if (_incorrect_answers is EqualUnmodifiableListView)
-      return _incorrect_answers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_incorrect_answers);
   }
@@ -203,15 +197,13 @@ class _$_Question implements _Question {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Question &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.difficulty, difficulty) ||
-                other.difficulty == difficulty) &&
-            (identical(other.question, question) ||
-                other.question == question) &&
-            (identical(other.correct_answer, correct_answer) ||
-                other.correct_answer == correct_answer) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.difficulty, difficulty) &&
+            const DeepCollectionEquality().equals(other.question, question) &&
+            const DeepCollectionEquality()
+                .equals(other.correct_answer, correct_answer) &&
             const DeepCollectionEquality()
                 .equals(other._incorrect_answers, _incorrect_answers));
   }
@@ -220,16 +212,15 @@ class _$_Question implements _Question {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      category,
-      type,
-      difficulty,
-      question,
-      correct_answer,
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(difficulty),
+      const DeepCollectionEquality().hash(question),
+      const DeepCollectionEquality().hash(correct_answer),
       const DeepCollectionEquality().hash(_incorrect_answers));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_QuestionCopyWith<_$_Question> get copyWith =>
       __$$_QuestionCopyWithImpl<_$_Question>(this, _$identity);
 
