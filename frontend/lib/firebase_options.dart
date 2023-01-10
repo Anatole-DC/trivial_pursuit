@@ -53,10 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCYtSQWf8DqRZCjG87jmQjye35ooO2fdsE',
-    appId: '1:884902095592:android:21284ad3f4d030702df75d',
-    messagingSenderId: '884902095592',
-    projectId: 'trivia-class-d2d55',
-    storageBucket: 'trivia-class-d2d55.appspot.com',
+    apiKey: 'AIzaSyCcgMZt7-t3Z3WRdAnXhWvSdplWncUQ110',
+    appId: '1:360430963641:android:7e18302621e934707a4468',
+    messagingSenderId: '360430963641',
+    projectId: 'flutter-trivia-b0463',
+    storageBucket: 'flutter-trivia-b0463.appspot.com',
   );
 }
