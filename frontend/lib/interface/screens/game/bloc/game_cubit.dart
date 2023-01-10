@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 import 'package:trivial_pursuit/data/database/auth/firebase_player_repository.dart';
 import 'package:trivial_pursuit/data/database/questions/firebase_questions_repository.dart';
@@ -29,8 +30,11 @@ class GameCubit extends Cubit<QuestionState> {
   // }
 
   String _getDate() {
+    // String today = DateTime.now().toIso8601String();
+    // return '${today.year}-${today.month}-${today.day}';
     DateTime today = DateTime.now();
-    return '${today.year}-${today.month}-${today.day}';
+    final DateFormat formatter = DateFormat('yyyy-MM-dd');
+    return formatter.format(today);
   }
 
   Future<void> fetchQuestion() async {

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 import 'package:trivial_pursuit/data/models/auth/player.dart';
 
@@ -18,8 +19,11 @@ class PlayerFirebase {
   }
 
   String _getDate() {
+    // String today = DateTime.now().toIso8601String();
+    // return '${today.year}-${today.month}-${today.day}';
     DateTime today = DateTime.now();
-    return '${today.year}-${today.month}-${today.day}';
+    final DateFormat formatter = DateFormat('yyyy-MM-dd');
+    return formatter.format(today);
   }
 
   static late CollectionReference<Player> _playerRef;
