@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +26,7 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   late List<QuestionCard> _questionDeck;
   int currentQuestion = 0;
+  late QuestionCard _currentCard;
 
   List<QuestionCard> questionsDeck(ListQuestions questions) {
     List<QuestionCard> questionCards = [];
@@ -32,6 +35,11 @@ class _GamePageState extends State<GamePage> {
       questionCards.add(QuestionCard(question: question));
     }
     return questionCards;
+  }
+
+  QuestionCard _getCurrentCard() {
+    _currentCard = _questionDeck[currentQuestion];
+    return _currentCard;
   }
 
   @override
@@ -53,7 +61,7 @@ class _GamePageState extends State<GamePage> {
             }, builder: (context, state) {
               if (state is Loaded) {
                 _questionDeck = questionsDeck(state.questions);
-                return Center(child: _questionDeck[currentQuestion]);
+                return Center(child: _getCurrentCard());
               } else if (state is GameOver) {
                 return FutureBuilder<void>(
                     future: widget._playerFirebase
@@ -61,9 +69,19 @@ class _GamePageState extends State<GamePage> {
                     builder: (context, AsyncSnapshot<void> snapshot) {
                       return const Center(child: Text("Game is over !"));
                     });
+              } else if (state is DisplayerAnswer) {
+                return Center(
+                    child: QuestionCard(
+                  question: state.question,
+                  answerDisplayed: true,
+                ));
               } else if (state is GameAlreadyPlayed) {
                 return const Center(
                     child: Text("You already played, come back tomorrow !"));
+              } else if (state is Error) {
+                return Center(
+                  child: Text(state.message),
+                );
               }
               return const Center(child: CircularProgressIndicator());
             })));

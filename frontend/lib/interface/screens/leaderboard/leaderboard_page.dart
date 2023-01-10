@@ -27,7 +27,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       members.add(TableRow(
         children: [
           Column(children: [Text((i + 1).toString())]),
-          Column(children: [Text(players[i].username ?? "null")]),
+          Column(children: [Text(players[i].username ?? "Default Username")]),
           Column(children: [Text(players[i].score.toString())]),
         ],
       ));

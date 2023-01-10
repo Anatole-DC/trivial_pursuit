@@ -177,6 +177,7 @@ mixin _$QuestionState {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -190,6 +191,7 @@ mixin _$QuestionState {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -203,6 +205,7 @@ mixin _$QuestionState {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -217,6 +220,7 @@ mixin _$QuestionState {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -230,6 +234,7 @@ mixin _$QuestionState {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -243,6 +248,7 @@ mixin _$QuestionState {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -312,6 +318,7 @@ class _$Initial implements Initial {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return initial();
   }
@@ -328,6 +335,7 @@ class _$Initial implements Initial {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return initial?.call();
   }
@@ -344,6 +352,7 @@ class _$Initial implements Initial {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -364,6 +373,7 @@ class _$Initial implements Initial {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return initial(this);
   }
@@ -380,6 +390,7 @@ class _$Initial implements Initial {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return initial?.call(this);
   }
@@ -396,6 +407,7 @@ class _$Initial implements Initial {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -456,6 +468,7 @@ class _$Loading implements Loading {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return loading();
   }
@@ -472,6 +485,7 @@ class _$Loading implements Loading {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return loading?.call();
   }
@@ -488,6 +502,7 @@ class _$Loading implements Loading {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -508,6 +523,7 @@ class _$Loading implements Loading {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return loading(this);
   }
@@ -524,6 +540,7 @@ class _$Loading implements Loading {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return loading?.call(this);
   }
@@ -540,6 +557,7 @@ class _$Loading implements Loading {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -633,6 +651,7 @@ class _$Loaded implements Loaded {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return loaded(questions);
   }
@@ -649,6 +668,7 @@ class _$Loaded implements Loaded {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return loaded?.call(questions);
   }
@@ -665,6 +685,7 @@ class _$Loaded implements Loaded {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -685,6 +706,7 @@ class _$Loaded implements Loaded {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return loaded(this);
   }
@@ -701,6 +723,7 @@ class _$Loaded implements Loaded {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return loaded?.call(this);
   }
@@ -717,6 +740,7 @@ class _$Loaded implements Loaded {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -810,6 +834,7 @@ class _$AnswerSelected implements AnswerSelected {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return awnserSelected(isGoodAwnser);
   }
@@ -826,6 +851,7 @@ class _$AnswerSelected implements AnswerSelected {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return awnserSelected?.call(isGoodAwnser);
   }
@@ -842,6 +868,7 @@ class _$AnswerSelected implements AnswerSelected {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (awnserSelected != null) {
@@ -862,6 +889,7 @@ class _$AnswerSelected implements AnswerSelected {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return awnserSelected(this);
   }
@@ -878,6 +906,7 @@ class _$AnswerSelected implements AnswerSelected {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return awnserSelected?.call(this);
   }
@@ -894,6 +923,7 @@ class _$AnswerSelected implements AnswerSelected {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (awnserSelected != null) {
@@ -961,6 +991,7 @@ class _$GoodAnswer implements GoodAnswer {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return goodAnswer();
   }
@@ -977,6 +1008,7 @@ class _$GoodAnswer implements GoodAnswer {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return goodAnswer?.call();
   }
@@ -993,6 +1025,7 @@ class _$GoodAnswer implements GoodAnswer {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (goodAnswer != null) {
@@ -1013,6 +1046,7 @@ class _$GoodAnswer implements GoodAnswer {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return goodAnswer(this);
   }
@@ -1029,6 +1063,7 @@ class _$GoodAnswer implements GoodAnswer {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return goodAnswer?.call(this);
   }
@@ -1045,6 +1080,7 @@ class _$GoodAnswer implements GoodAnswer {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (goodAnswer != null) {
@@ -1108,6 +1144,7 @@ class _$WrongAnswer implements WrongAnswer {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return wrongAnswer();
   }
@@ -1124,6 +1161,7 @@ class _$WrongAnswer implements WrongAnswer {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return wrongAnswer?.call();
   }
@@ -1140,6 +1178,7 @@ class _$WrongAnswer implements WrongAnswer {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (wrongAnswer != null) {
@@ -1160,6 +1199,7 @@ class _$WrongAnswer implements WrongAnswer {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return wrongAnswer(this);
   }
@@ -1176,6 +1216,7 @@ class _$WrongAnswer implements WrongAnswer {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return wrongAnswer?.call(this);
   }
@@ -1192,6 +1233,7 @@ class _$WrongAnswer implements WrongAnswer {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (wrongAnswer != null) {
@@ -1276,6 +1318,7 @@ class _$Error implements Error {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return error(message);
   }
@@ -1292,6 +1335,7 @@ class _$Error implements Error {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return error?.call(message);
   }
@@ -1308,6 +1352,7 @@ class _$Error implements Error {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1328,6 +1373,7 @@ class _$Error implements Error {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return error(this);
   }
@@ -1344,6 +1390,7 @@ class _$Error implements Error {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return error?.call(this);
   }
@@ -1360,6 +1407,7 @@ class _$Error implements Error {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1427,6 +1475,7 @@ class _$GameAlreadyPlayed implements GameAlreadyPlayed {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return gameAlreadyPlayed();
   }
@@ -1443,6 +1492,7 @@ class _$GameAlreadyPlayed implements GameAlreadyPlayed {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return gameAlreadyPlayed?.call();
   }
@@ -1459,6 +1509,7 @@ class _$GameAlreadyPlayed implements GameAlreadyPlayed {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (gameAlreadyPlayed != null) {
@@ -1479,6 +1530,7 @@ class _$GameAlreadyPlayed implements GameAlreadyPlayed {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return gameAlreadyPlayed(this);
   }
@@ -1495,6 +1547,7 @@ class _$GameAlreadyPlayed implements GameAlreadyPlayed {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return gameAlreadyPlayed?.call(this);
   }
@@ -1511,6 +1564,7 @@ class _$GameAlreadyPlayed implements GameAlreadyPlayed {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (gameAlreadyPlayed != null) {
@@ -1596,6 +1650,7 @@ class _$GameOver implements GameOver {
     required TResult Function(String message) error,
     required TResult Function() gameAlreadyPlayed,
     required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
   }) {
     return gameOver(score);
   }
@@ -1612,6 +1667,7 @@ class _$GameOver implements GameOver {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
   }) {
     return gameOver?.call(score);
   }
@@ -1628,6 +1684,7 @@ class _$GameOver implements GameOver {
     TResult Function(String message)? error,
     TResult Function()? gameAlreadyPlayed,
     TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
     required TResult orElse(),
   }) {
     if (gameOver != null) {
@@ -1648,6 +1705,7 @@ class _$GameOver implements GameOver {
     required TResult Function(Error value) error,
     required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
     required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
   }) {
     return gameOver(this);
   }
@@ -1664,6 +1722,7 @@ class _$GameOver implements GameOver {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
   }) {
     return gameOver?.call(this);
   }
@@ -1680,6 +1739,7 @@ class _$GameOver implements GameOver {
     TResult Function(Error value)? error,
     TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
     TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
     required TResult orElse(),
   }) {
     if (gameOver != null) {
@@ -1695,5 +1755,187 @@ abstract class GameOver implements QuestionState {
   int get score;
   @JsonKey(ignore: true)
   _$$GameOverCopyWith<_$GameOver> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DisplayerAnswerCopyWith<$Res> {
+  factory _$$DisplayerAnswerCopyWith(
+          _$DisplayerAnswer value, $Res Function(_$DisplayerAnswer) then) =
+      __$$DisplayerAnswerCopyWithImpl<$Res>;
+  $Res call({Question question});
+}
+
+/// @nodoc
+class __$$DisplayerAnswerCopyWithImpl<$Res>
+    extends _$QuestionStateCopyWithImpl<$Res>
+    implements _$$DisplayerAnswerCopyWith<$Res> {
+  __$$DisplayerAnswerCopyWithImpl(
+      _$DisplayerAnswer _value, $Res Function(_$DisplayerAnswer) _then)
+      : super(_value, (v) => _then(v as _$DisplayerAnswer));
+
+  @override
+  _$DisplayerAnswer get _value => super._value as _$DisplayerAnswer;
+
+  @override
+  $Res call({
+    Object? question = freezed,
+  }) {
+    return _then(_$DisplayerAnswer(
+      question == freezed
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
+              as Question,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DisplayerAnswer implements DisplayerAnswer {
+  const _$DisplayerAnswer(this.question);
+
+  @override
+  final Question question;
+
+  @override
+  String toString() {
+    return 'QuestionState.displayAnswer(question: $question)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DisplayerAnswer &&
+            const DeepCollectionEquality().equals(other.question, question));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(question));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DisplayerAnswerCopyWith<_$DisplayerAnswer> get copyWith =>
+      __$$DisplayerAnswerCopyWithImpl<_$DisplayerAnswer>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(ListQuestions questions) loaded,
+    required TResult Function(bool isGoodAwnser) awnserSelected,
+    required TResult Function() goodAnswer,
+    required TResult Function() wrongAnswer,
+    required TResult Function(String message) error,
+    required TResult Function() gameAlreadyPlayed,
+    required TResult Function(int score) gameOver,
+    required TResult Function(Question question) displayAnswer,
+  }) {
+    return displayAnswer(question);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(ListQuestions questions)? loaded,
+    TResult Function(bool isGoodAwnser)? awnserSelected,
+    TResult Function()? goodAnswer,
+    TResult Function()? wrongAnswer,
+    TResult Function(String message)? error,
+    TResult Function()? gameAlreadyPlayed,
+    TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
+  }) {
+    return displayAnswer?.call(question);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(ListQuestions questions)? loaded,
+    TResult Function(bool isGoodAwnser)? awnserSelected,
+    TResult Function()? goodAnswer,
+    TResult Function()? wrongAnswer,
+    TResult Function(String message)? error,
+    TResult Function()? gameAlreadyPlayed,
+    TResult Function(int score)? gameOver,
+    TResult Function(Question question)? displayAnswer,
+    required TResult orElse(),
+  }) {
+    if (displayAnswer != null) {
+      return displayAnswer(question);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(AnswerSelected value) awnserSelected,
+    required TResult Function(GoodAnswer value) goodAnswer,
+    required TResult Function(WrongAnswer value) wrongAnswer,
+    required TResult Function(Error value) error,
+    required TResult Function(GameAlreadyPlayed value) gameAlreadyPlayed,
+    required TResult Function(GameOver value) gameOver,
+    required TResult Function(DisplayerAnswer value) displayAnswer,
+  }) {
+    return displayAnswer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(AnswerSelected value)? awnserSelected,
+    TResult Function(GoodAnswer value)? goodAnswer,
+    TResult Function(WrongAnswer value)? wrongAnswer,
+    TResult Function(Error value)? error,
+    TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
+    TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
+  }) {
+    return displayAnswer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(AnswerSelected value)? awnserSelected,
+    TResult Function(GoodAnswer value)? goodAnswer,
+    TResult Function(WrongAnswer value)? wrongAnswer,
+    TResult Function(Error value)? error,
+    TResult Function(GameAlreadyPlayed value)? gameAlreadyPlayed,
+    TResult Function(GameOver value)? gameOver,
+    TResult Function(DisplayerAnswer value)? displayAnswer,
+    required TResult orElse(),
+  }) {
+    if (displayAnswer != null) {
+      return displayAnswer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DisplayerAnswer implements QuestionState {
+  const factory DisplayerAnswer(final Question question) = _$DisplayerAnswer;
+
+  Question get question;
+  @JsonKey(ignore: true)
+  _$$DisplayerAnswerCopyWith<_$DisplayerAnswer> get copyWith =>
       throw _privateConstructorUsedError;
 }

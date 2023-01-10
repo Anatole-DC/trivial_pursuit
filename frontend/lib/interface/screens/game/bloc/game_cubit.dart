@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trivial_pursuit/data/database/auth/firebase_authentication.dart';
 import 'package:trivial_pursuit/data/database/auth/firebase_player_repository.dart';
@@ -51,6 +53,8 @@ class GameCubit extends Cubit<QuestionState> {
     if (isGoodAwnser) {
       score += difficulty[questions.results[currentQuestionIndex].difficulty]!;
     }
+    emit(DisplayerAnswer(questions.results[currentQuestionIndex]));
+    sleep(const Duration(seconds: 1));
     currentQuestionIndex++;
     emit(AnswerSelected(isGoodAwnser));
     if (currentQuestionIndex < questions.results.length) {
